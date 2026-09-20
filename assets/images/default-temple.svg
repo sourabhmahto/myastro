@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FEF3C7" />
+      <stop offset="50%" stop-color="#FED7AA" />
+      <stop offset="100%" stop-color="#FDBA74" />
+    </linearGradient>
+    <linearGradient id="templeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7F1D1D" />
+      <stop offset="50%" stop-color="#991B1B" />
+      <stop offset="100%" stop-color="#7F1D1D" />
+    </linearGradient>
+    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#0369A1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="800" height="500" fill="url(#skyGrad)"/>
+  
+  <!-- Sacred Sun / Aura -->
+  <circle cx="400" cy="180" r="100" fill="#F59E0B" opacity="0.35"/>
+  <circle cx="400" cy="180" r="70" fill="#FDE68A" opacity="0.5"/>
+
+  <!-- Distant Hill (Mandhata) -->
+  <path d="M 0,340 Q 220,240 400,260 T 800,320 L 800,500 L 0,500 Z" fill="#C2410C" opacity="0.4"/>
+  <path d="M 0,350 Q 280,270 520,300 T 800,340 L 800,500 L 0,500 Z" fill="#9A3412" opacity="0.5"/>
+
+  <!-- Temple Silhouette / Architecture -->
+  <g transform="translate(300, 110)">
+    <!-- Kalash & Flag -->
+    <line x1="100" y1="10" x2="100" y2="40" stroke="#F59E0B" stroke-width="4"/>
+    <path d="M 100,10 L 135,22 L 100,34 Z" fill="#DC2626"/>
+    <circle cx="100" cy="40" r="8" fill="#F59E0B"/>
+    <!-- Shikhara Tiers -->
+    <path d="M 100,45 L 82,85 L 118,85 Z" fill="url(#templeGrad)"/>
+    <path d="M 100,75 L 70,140 L 130,140 Z" fill="url(#templeGrad)"/>
+    <path d="M 100,120 L 55,220 L 145,220 Z" fill="url(#templeGrad)"/>
+    <!-- Temple Base Sanctum & Pillars -->
+    <rect x="40" y="220" width="120" height="90" fill="#78350F" rx="4"/>
+    <path d="M 30,220 L 170,220 L 160,205 L 40,205 Z" fill="#F59E0B"/>
+    <!-- Doorway Sanctum -->
+    <path d="M 80,310 L 80,245 Q 100,230 120,245 L 120,310 Z" fill="#1E293B"/>
+    <text x="100" y="280" font-family="'Georgia', serif" font-size="20" fill="#FDE68A" text-anchor="middle">ॐ</text>
+    <!-- Ghat Steps -->
+    <rect x="0" y="310" width="200" height="15" fill="#B45309"/>
+    <rect x="-20" y="325" width="240" height="15" fill="#92400E"/>
+    <rect x="-40" y="340" width="280" height="15" fill="#78350F"/>
+  </g>
+
+  <!-- River Narmada -->
+  <rect x="0" y="440" width="800" height="60" fill="url(#waterGrad)"/>
+  <path d="M 0,440 Q 200,430 400,440 T 800,440 L 800,500 L 0,500 Z" fill="#0284C7" opacity="0.6"/>
+  <!-- Gentle Waves -->
+  <path d="M 50,460 Q 150,455 250,460" stroke="#BAE6FD" stroke-width="2" fill="none"/>
+  <path d="M 350,470 Q 450,465 550,470" stroke="#BAE6FD" stroke-width="2" fill="none"/>
+  <path d="M 600,455 Q 700,450 780,455" stroke="#BAE6FD" stroke-width="2" fill="none"/>
+
+  <text x="400" y="485" font-family="'Cinzel', 'Georgia', serif" font-size="16" font-weight="bold" fill="#F8FAFC" text-anchor="middle" letter-spacing="3">SHREE OMKARESHWAR JYOTIRLINGA SANCTUM</text>
+</svg>

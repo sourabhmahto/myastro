@@ -1,0 +1,24 @@
+# Deny execution of all scripts in uploads folder
+<FilesMatch "\.(php|phtml|php3|php4|php5|php7|php8|phps|pl|py|cgi|sh|bash|exe)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Force default handler for uploaded assets
+<IfModule mod_mime.c>
+    RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .php8
+</IfModule>
+
+# Disable PHP Engine if supported
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php8.c>
+    php_flag engine off
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes -ExecCGI

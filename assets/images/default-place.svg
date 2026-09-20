@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="hillGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="40%" stop-color="#E0F2FE"/>
+      <stop offset="100%" stop-color="#BAE6FD"/>
+    </linearGradient>
+    <linearGradient id="riverFlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="50%" stop-color="#0E7490"/>
+      <stop offset="100%" stop-color="#155E75"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#hillGrad)"/>
+
+  <!-- Mandhata Island in sacred Om shape -->
+  <path d="M 150,300 C 180,180 340,160 400,210 C 460,160 620,180 650,300 C 620,380 480,410 400,380 C 320,410 180,380 150,300 Z" fill="#15803D" stroke="#166534" stroke-width="4"/>
+  <!-- Top hill contours -->
+  <path d="M 230,280 C 270,220 370,210 400,240 C 430,210 530,220 570,280 C 530,330 430,350 400,320 C 370,350 270,330 230,280 Z" fill="#16A34A"/>
+  
+  <!-- Shikhara on Island -->
+  <g transform="translate(385, 170)">
+    <polygon points="15,0 0,40 30,40" fill="#DC2626"/>
+    <rect x="5" y="40" width="20" height="20" fill="#F59E0B"/>
+    <line x1="15" y1="0" x2="25" y2="10" stroke="#DC2626" stroke-width="2"/>
+  </g>
+
+  <!-- Jhula Pul Suspension Bridge -->
+  <path d="M 80,330 Q 400,380 720,330" stroke="#B45309" stroke-width="4" fill="none"/>
+  <path d="M 80,300 L 80,350 M 720,300 L 720,350" stroke="#78350F" stroke-width="6"/>
+  <!-- Suspension ropes -->
+  <line x1="200" y1="340" x2="200" y2="350" stroke="#92400E" stroke-width="2"/>
+  <line x1="300" y1="355" x2="300" y2="368" stroke="#92400E" stroke-width="2"/>
+  <line x1="500" y1="355" x2="500" y2="368" stroke="#92400E" stroke-width="2"/>
+  <line x1="600" y1="340" x2="600" y2="350" stroke="#92400E" stroke-width="2"/>
+
+  <!-- River Narmada surrounding Island -->
+  <path d="M 0,380 Q 200,320 400,390 T 800,360 L 800,500 L 0,500 Z" fill="url(#riverFlow)" opacity="0.95"/>
+  <path d="M 60,430 Q 180,420 300,435" stroke="#7DD3FC" stroke-width="2" fill="none"/>
+  <path d="M 500,440 Q 650,430 750,445" stroke="#7DD3FC" stroke-width="2" fill="none"/>
+
+  <text x="400" y="480" font-family="'Cinzel', 'Georgia', serif" font-size="16" font-weight="bold" fill="#F8FAFC" text-anchor="middle" letter-spacing="3">MANDHATA ISLAND &amp; HOLY PARIKRAMA TRAIL</text>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="poojaAura" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#FEF3C7"/>
+      <stop offset="40%" stop-color="#FDE68A"/>
+      <stop offset="80%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </radialGradient>
+    <linearGradient id="brassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D"/>
+      <stop offset="50%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#poojaAura)"/>
+
+  <!-- Sacred Geometric Yantra Lines -->
+  <g stroke="#D97706" stroke-width="1.5" fill="none" opacity="0.4" transform="translate(400, 240)">
+    <circle r="160"/>
+    <circle r="140"/>
+    <polygon points="0,-130 112,65 -112,65"/>
+    <polygon points="0,130 112,-65 -112,-65"/>
+  </g>
+
+  <!-- Brass Pooja Thali & Diya -->
+  <g transform="translate(400, 260)">
+    <!-- Thali plate -->
+    <ellipse cx="0" cy="80" rx="220" ry="60" fill="url(#brassGrad)" stroke="#78350F" stroke-width="3"/>
+    <ellipse cx="0" cy="78" rx="200" ry="50" fill="#FDE68A" stroke="#B45309" stroke-width="1.5"/>
+
+    <!-- Sacred Shiva Lingam in center -->
+    <ellipse cx="0" cy="20" rx="70" ry="30" fill="#1E293B"/>
+    <path d="M -45,15 C -45,-45 45,-45 45,15 Z" fill="#0F172A"/>
+    <!-- Tripundra (Three holy horizontal marks) -->
+    <path d="M -22,-15 Q 0,-20 22,-15" stroke="#FFFFFF" stroke-width="3" fill="none"/>
+    <path d="M -22,-8 Q 0,-13 22,-8" stroke="#FFFFFF" stroke-width="3" fill="none"/>
+    <path d="M -22,-1 Q 0,-6 22,-1" stroke="#FFFFFF" stroke-width="3" fill="none"/>
+    <circle cx="0" cy="-8" r="3.5" fill="#DC2626"/>
+
+    <!-- Bilva Patra (Three leaves) on Lingam -->
+    <path d="M 0,-42 Q -15,-60 0,-70 Q 15,-60 0,-42" fill="#15803D"/>
+    <path d="M -5,-48 Q -28,-50 -32,-35 Q -18,-30 -5,-45" fill="#16A34A"/>
+    <path d="M 5,-48 Q 28,-50 32,-35 Q 18,-30 5,-45" fill="#16A34A"/>
+
+    <!-- Brass Diya with sacred flame -->
+    <g transform="translate(-120, 60)">
+      <ellipse cx="0" cy="15" rx="30" ry="12" fill="url(#brassGrad)"/>
+      <path d="M 0,10 Q -10,-8 0,-25 Q 10,-8 0,10 Z" fill="#DC2626"/>
+      <path d="M 0,8 Q -6,-3 0,-18 Q 6,-3 0,8 Z" fill="#FDE047"/>
+    </g>
+
+    <g transform="translate(120, 60)">
+      <ellipse cx="0" cy="15" rx="30" ry="12" fill="url(#brassGrad)"/>
+      <path d="M 0,10 Q -10,-8 0,-25 Q 10,-8 0,10 Z" fill="#DC2626"/>
+      <path d="M 0,8 Q -6,-3 0,-18 Q 6,-3 0,8 Z" fill="#FDE047"/>
+    </g>
+  </g>
+
+  <text x="400" y="465" font-family="'Cinzel', 'Georgia', serif" font-size="16" font-weight="bold" fill="#78350F" text-anchor="middle" letter-spacing="3">VEDIC POOJA &amp; RUDRABHISHEK SEVA</text>
+</svg>

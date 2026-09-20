@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>श्री ओंकारेश्वर ज्योतिर्लिंग - वैदिक पूजा एवं ज्योतिष सेवा | Omkareshwar Jyotirlinga Seva</title>
+  <meta name="description" content="श्री ओंकारेश्वर ज्योतिर्लिंग तीर्थ पर प्रामाणिक वैदिक रुद्राभिषेक, कालसर्प दोष निवारण, नर्मदा महाआरती एवं ज्योतिष परामर्श सेवा। प्रमाणित तीर्थ पुरोहितों द्वारा शास्त्रोक्त संकल्प।">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <!-- Google Fonts: Rozha One, Cinzel, Outfit, Noto Sans Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Rozha+One&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS 3.4 CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            sacred: {
+              50: '#FDFBF7',
+              100: '#FEF3C7',
+              200: '#FDE68A',
+              500: '#E06D14',
+              600: '#C85A17',
+              700: '#B45309',
+              800: '#7A1C1C',
+              900: '#5C1010',
+              dark: '#111827',
+              charcoal: '#1F2937'
+            }
+          },
+          fontFamily: {
+            divine: ['"Rozha One"', '"Cinzel"', '"Noto Sans Devanagari"', 'serif'],
+            sans: ['"Outfit"', '"Noto Sans Devanagari"', 'sans-serif'],
+            devnag: ['"Noto Sans Devanagari"', 'serif']
+          },
+          boxShadow: {
+            'sacred': '0 10px 30px -5px rgba(224, 109, 20, 0.28)',
+            'sacred-lg': '0 20px 45px -10px rgba(122, 28, 28, 0.35)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Vue 3 & Pinia & Vue Router via ESM -->
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3.4.21/dist/vue.esm-browser.prod.js"
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FAF6EE;
+      background-image: radial-gradient(#E06D14 0.65px, transparent 0.65px), radial-gradient(#7A1C1C 0.65px, #FAF6EE 0.65px);
+      background-size: 26px 26px;
+      background-position: 0 0, 13px 13px;
+      color: #1F2937;
+      font-family: 'Outfit', 'Noto Sans Devanagari', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .sacred-texture-bg {
+      background: linear-gradient(180deg, rgba(254, 243, 199, 0.4) 0%, rgba(250, 246, 238, 0.95) 100%);
+    }
+    .font-divine {
+      font-family: 'Rozha One', 'Cinzel', 'Noto Sans Devanagari', serif;
+    }
+    .glass-nav {
+      background: rgba(250, 246, 238, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .sacred-gradient-bg {
+      background: linear-gradient(135deg, #7A1C1C 0%, #B45309 50%, #E06D14 100%);
+    }
+    .saffron-gradient-bg {
+      background: linear-gradient(135deg, #E06D14 0%, #C85A17 50%, #7A1C1C 100%);
+    }
+    .vermilion-gradient-bg {
+      background: linear-gradient(135deg, #991B1B 0%, #B91C1C 60%, #EA580C 100%);
+    }
+    .gold-shimmer {
+      background: linear-gradient(90deg, #FDE68A 0%, #FFFFFF 50%, #FDE68A 100%);
+      background-size: 200% auto;
+      color: #000;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 3s linear infinite;
+    }
+    @keyframes shimmer {
+      to { background-position: 200% center; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    /* Hide scrollbar for category pills */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="antialiased selection:bg-sacred-500 selection:text-white pb-24 md:pb-12">
+
+  <div id="app">
+    <!-- Vue Application Root -->
+  </div>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
