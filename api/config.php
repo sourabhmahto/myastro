@@ -32,12 +32,13 @@ error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 ini_set('display_errors', '0');
 
 // =========================================================================
-// 1. DATABASE CONFIGURATION
+// 1. DATABASE CONFIGURATION (Supports Azure Environment Variables + Local Fallback)
 // =========================================================================
 define('API_DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('API_DB_PORT', getenv('DB_PORT') ?: '3306');
 define('API_DB_NAME', getenv('DB_NAME') ?: 'omkareshwar_db');
 define('API_DB_USER', getenv('DB_USER') ?: 'root');
-define('API_DB_PASS', getenv('DB_PASSWORD') ?: '');
+define('API_DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : (getenv('DB_PASSWORD') !== false ? getenv('DB_PASSWORD') : ''));
 define('API_DB_CHARSET', 'utf8mb4');
 
 // =========================================================================
@@ -57,22 +58,28 @@ class ApiDB {
     public static function get(): ?PDO {
         if (self::$pdo === null) {
             try {
-                $dsn = sprintf('mysql:host=%s;dbname=%s;charset=%s', API_DB_HOST, API_DB_NAME, API_DB_CHARSET);
+                $dsn = sprintf('mysql:host=%s;port=%s;dbname=%s;charset=%s', API_DB_HOST, API_DB_PORT, API_DB_NAME, API_DB_CHARSET);
                 $options = [
                     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                     PDO::ATTR_EMULATE_PREPARES   => false,
                     PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES " . API_DB_CHARSET
                 ];
+                
+                // Support SSL if specified (e.g. Azure MySQL Flexible Server)
+                if (getenv('MYSQL_ATTR_SSL_CA')) {
+                    $options[PDO::MYSQL_ATTR_SSL_CA] = getenv('MYSQL_ATTR_SSL_CA');
+                }
+
                 self::$pdo = new PDO($dsn, API_DB_USER, API_DB_PASS, $options);
             } catch (PDOException $e) {
-                // Try creating database if it doesn't exist
+                // Try creating database if it doesn't exist on local dev
                 try {
-                    $rootDsn = sprintf('mysql:host=%s;charset=%s', API_DB_HOST, API_DB_CHARSET);
+                    $rootDsn = sprintf('mysql:host=%s;port=%s;charset=%s', API_DB_HOST, API_DB_PORT, API_DB_CHARSET);
                     $rootPdo = new PDO($rootDsn, API_DB_USER, API_DB_PASS);
                     $rootPdo->exec("CREATE DATABASE IF NOT EXISTS `" . API_DB_NAME . "` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
                     
-                    $dsn = sprintf('mysql:host=%s;dbname=%s;charset=%s', API_DB_HOST, API_DB_NAME, API_DB_CHARSET);
+                    $dsn = sprintf('mysql:host=%s;port=%s;dbname=%s;charset=%s', API_DB_HOST, API_DB_PORT, API_DB_NAME, API_DB_CHARSET);
                     self::$pdo = new PDO($dsn, API_DB_USER, API_DB_PASS, [
                         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
