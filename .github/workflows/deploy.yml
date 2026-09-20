@@ -1,0 +1,103 @@
+name: Build and deploy PHP app to Azure Web App - my-astro
+
+on:
+  push:
+    branches:
+      - dev     # Deploys to Dev environment
+      - main    # Deploys to Production environment
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2' # Supported stable PHP runtime on Azure
+
+      - name: Check if composer.json exists
+        id: check_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: 'composer.json'
+
+      - name: Run composer install if composer.json exists
+        if: steps.check_files.outputs.files_exists == 'true'
+        run: composer validate --no-check-publish && composer install --prefer-dist --no-progress --no-dev
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: php-app
+          path: .
+
+  # -------------------------------------------------------------
+  # DEV DEPLOYMENT: Runs automatically when you push to 'dev'
+  # -------------------------------------------------------------
+  deploy-dev:
+    name: Deploy to Dev
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/dev'
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: php-app
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_8188D9BC0BDE4B6789BDE5925432D5A9 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_C0712602B84D40DB91D97D31B031917B }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_1759E3B453494AF0BCE77ABD11457052 }}
+
+      - name: Deploy to Azure Dev App / Slot
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'my-astro'          # Your App Service Name
+          slot-name: 'dev'               # Change to your Dev Slot name or separate Dev App name
+          package: .
+
+  # -------------------------------------------------------------
+  # PRODUCTION DEPLOYMENT: Runs only when merged into 'main'
+  # -------------------------------------------------------------
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: php-app
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_8188D9BC0BDE4B6789BDE5925432D5A9 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_C0712602B84D40DB91D97D31B031917B }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_1759E3B453494AF0BCE77ABD11457052 }}
+
+      - name: Deploy to Azure Web App (Production)
+        uses: azure/webapps-deploy@v3
+        id: deploy-to-webapp
+        with:
+          app-name: 'my-astro'
+          slot-name: 'Production'
+          package: .
